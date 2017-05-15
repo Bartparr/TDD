@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <div id="myApp">
+    </div>
+
+
+      <script src="flickr-fetcher.js"></script>
+      <script src="photo-lister.js"></script>
+
+      <script>
+      //document.getElementById("myApp").innerHTML = "Hello JavaScript!";
+      // Shorthand for $( document ).ready()
+      $(function() {
+        //alert( "ready!" );
+        FlickrFetcher.fetchPhotos('8060d4cdac3ceb86af470aae29af3a56','otters')
+        .then(PhotoLister.photoListToHTML)
+        .then(function(photosHTML){
+          console.log(photosHTML);
+          PhotoLister.addPhotosToElement($,'#myApp',photosHTML);
+        });
+
+      });
+
+      </script>
+
+  </body>
+</html>
